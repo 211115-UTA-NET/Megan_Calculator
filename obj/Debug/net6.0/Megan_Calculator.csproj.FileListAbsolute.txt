@@ -1,0 +1,15 @@
+C:\Users\hiby1\Desktop\Revature\MeganP\MiscellaneousPractice\Projects\Megan_Calculator\bin\Debug\net6.0\Megan_Calculator.exe
+C:\Users\hiby1\Desktop\Revature\MeganP\MiscellaneousPractice\Projects\Megan_Calculator\bin\Debug\net6.0\Megan_Calculator.deps.json
+C:\Users\hiby1\Desktop\Revature\MeganP\MiscellaneousPractice\Projects\Megan_Calculator\bin\Debug\net6.0\Megan_Calculator.runtimeconfig.json
+C:\Users\hiby1\Desktop\Revature\MeganP\MiscellaneousPractice\Projects\Megan_Calculator\bin\Debug\net6.0\Megan_Calculator.dll
+C:\Users\hiby1\Desktop\Revature\MeganP\MiscellaneousPractice\Projects\Megan_Calculator\bin\Debug\net6.0\ref\Megan_Calculator.dll
+C:\Users\hiby1\Desktop\Revature\MeganP\MiscellaneousPractice\Projects\Megan_Calculator\bin\Debug\net6.0\Megan_Calculator.pdb
+C:\Users\hiby1\Desktop\Revature\MeganP\MiscellaneousPractice\Projects\Megan_Calculator\obj\Debug\net6.0\Megan_Calculator.csproj.AssemblyReference.cache
+C:\Users\hiby1\Desktop\Revature\MeganP\MiscellaneousPractice\Projects\Megan_Calculator\obj\Debug\net6.0\Megan_Calculator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hiby1\Desktop\Revature\MeganP\MiscellaneousPractice\Projects\Megan_Calculator\obj\Debug\net6.0\Megan_Calculator.AssemblyInfoInputs.cache
+C:\Users\hiby1\Desktop\Revature\MeganP\MiscellaneousPractice\Projects\Megan_Calculator\obj\Debug\net6.0\Megan_Calculator.AssemblyInfo.cs
+C:\Users\hiby1\Desktop\Revature\MeganP\MiscellaneousPractice\Projects\Megan_Calculator\obj\Debug\net6.0\Megan_Calculator.csproj.CoreCompileInputs.cache
+C:\Users\hiby1\Desktop\Revature\MeganP\MiscellaneousPractice\Projects\Megan_Calculator\obj\Debug\net6.0\Megan_Calculator.dll
+C:\Users\hiby1\Desktop\Revature\MeganP\MiscellaneousPractice\Projects\Megan_Calculator\obj\Debug\net6.0\ref\Megan_Calculator.dll
+C:\Users\hiby1\Desktop\Revature\MeganP\MiscellaneousPractice\Projects\Megan_Calculator\obj\Debug\net6.0\Megan_Calculator.pdb
+C:\Users\hiby1\Desktop\Revature\MeganP\MiscellaneousPractice\Projects\Megan_Calculator\obj\Debug\net6.0\Megan_Calculator.genruntimeconfig.cache

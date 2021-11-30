@@ -32,20 +32,28 @@ public class Project0_Calculator {
 		Console.WriteLine("2. Calculate expression by typing");
 		string? option = Console.ReadLine().ToLower();
 
-		if (option == "1" || option == "Calculate expression from a file" || option == "file") {
+		if (option == "1" || option == "calculate expression from a file" || option == "file") {
 			string[] fileExpressions = getFileExpressions();
 			string[] fileNumberExpression = Parse(fileExpressions);
 			string[] allNumOpers = NumberBuilder(fileNumberExpression);
 			object[] totals = Calculate(allNumOpers);
+			EndOfCalc(totals);
+			using (StreamWriter sw = File.AppendText("Calculator_History.txt")) {
+				for (int i = 0; i < totals.Length; i++) {
+					sw.WriteLine(fileExpressions[i] + " = " + Convert.ToString(totals[i]));
+				}
+			}
 
-		} else if (option == "2" || option == "Calculate expression by typing" || option == "typing") {
+		} else if (option == "2" || option == "calculate expression by typing" || option == "typing") {
 			string expression = getTypedExpression();
 			string numberExpression = Parse(expression);
-			Console.WriteLine(numberExpression);
 			string allNumbersOperators = NumberBuilder(numberExpression);
-			Console.WriteLine(allNumbersOperators);
 			object total = Calculate(allNumbersOperators);
 			EndOfCalc(total);
+			using (StreamWriter sw = File.AppendText("Calculator_History.txt")) {
+				sw.WriteLine(expression + " = " + Convert.ToString(total));
+		
+			}
 		}
 	}
 
@@ -167,18 +175,12 @@ public class Project0_Calculator {
 		string? numberedExpression = " ";
 		double subtotal = 0;
 		for(int i = 1; i < brokenExpression.Length - 1; i++) {
-			Console.WriteLine(Convert.ToString(i) + " " + brokenExpression[i]);
 			if (i+1 == brokenExpression.Length - 1 && subtotal == 0) {
 				numberedExpression += brokenExpression[i];
 				break;
 			} else if (i+1 == brokenExpression.Length - 1 && subtotal != 0 && Int32.TryParse(brokenExpression[i], out int a)) {
-				if (Int32.Parse(brokenExpression[i]) > subtotal) {
-					numberedExpression += (subtotal * Int32.Parse(brokenExpression[i]));
-					break;
-				} else if (Int32.Parse(brokenExpression[i]) < subtotal) {
-					numberedExpression += (subtotal + Int32.Parse(brokenExpression[i]));
-					break;
-				}
+				numberedExpression += subtotal;
+				break;
 			} else {
 				if (Int32.TryParse(brokenExpression[i], out int j) && Int32.TryParse(brokenExpression[i+1], out int k) && subtotal == 0) {
 					if (Int32.Parse(brokenExpression[i]) > Int32.Parse(brokenExpression[i+1])) {
@@ -190,9 +192,9 @@ public class Project0_Calculator {
 					}
 				} else if (Int32.TryParse(brokenExpression[i], out int l) && Int32.TryParse(brokenExpression[i+1], out int m) && subtotal != 0) {
 					if (Int32.Parse(brokenExpression[i]) > Int32.Parse(brokenExpression[i+1])) {
-						subtotal += (subtotal + Int32.Parse(brokenExpression[i+1]));
+						subtotal += Int32.Parse(brokenExpression[i+1]);
 					} else if (Int32.Parse(brokenExpression[i]) < Int32.Parse(brokenExpression[i+1])) {
-						subtotal += (subtotal * Int32.Parse(brokenExpression[i+1]));
+						subtotal = (subtotal * Int32.Parse(brokenExpression[i+1]));
 					} else {
 						Console.WriteLine("Something broke case: 2");
 					}
@@ -211,7 +213,7 @@ public class Project0_Calculator {
 						i++;
 					} else if (brokenExpression[i+1] == "dot" || brokenExpression[i+1] == "point") {
 						//do stuff for later
-					} else if (/*Char.IsNumber(brokenExpression[i+1][0]) || */brokenExpression[i+1][0] == '+' || brokenExpression[i+1][0] == '*' || brokenExpression[i+1][0] == '/' || brokenExpression[i+1][0] == '-' || brokenExpression[i+1][0] == '.') {
+					} else if (Char.IsNumber(brokenExpression[i+1][0]) || brokenExpression[i+1][0] == '+' || brokenExpression[i+1][0] == '*' || brokenExpression[i+1][0] == '/' || brokenExpression[i+1][0] == '-' || brokenExpression[i+1][0] == '.') {
 						numberedExpression += brokenExpression[i] + brokenExpression[i+1];
 						i++;
 					} else {
@@ -234,15 +236,33 @@ public class Project0_Calculator {
 						//do stuff for later
 					} else if (Char.IsNumber(brokenExpression[i+1][0]) || brokenExpression[i+1][0] == '+' || brokenExpression[i+1][0] == '*' || brokenExpression[i+1][0] == '/' || brokenExpression[i+1][0] == '-' || brokenExpression[i+1][0] == '.') {
 						numberedExpression += subtotal + brokenExpression[i+1];
-						i++;
+						i = i+2;
 					} else {
 						Console.WriteLine("Something broke case: 4 ***no operator or number detect in segment***");
 					}
 					subtotal = 0;
+				} else if (!Int32.TryParse(brokenExpression[i], out int s) && subtotal == 0){ 
+					 if (brokenExpression[i+1] == "plus") {
+                                                numberedExpression += brokenExpression[i] + "+";
+                                                i++;
+                                        } else if (brokenExpression[i+1] == "times") {
+                                                numberedExpression += brokenExpression[i] + "*";
+                                                i++;
+                                        } else if (brokenExpression[i+1] == "divided" && brokenExpression[i+2] == "by") {
+                                                numberedExpression += brokenExpression[i] + "/";
+                                                i = i + 2;
+                                        } else if (brokenExpression[i+1] == "minus") {
+                                                numberedExpression += brokenExpression[i] + "-";
+                                                i++;
+                                        } else {
+						numberedExpression += brokenExpression[i];
+					}
+					
 				}
 			}
 
 		}
+		Console.WriteLine(numberedExpression);
 		return numberedExpression;
 	}
 
